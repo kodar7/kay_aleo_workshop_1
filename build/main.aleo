@@ -1,4 +1,4 @@
-program kay_aleo_workshop_1.aleo;
+program kay_workshop_1.aleo;
 
 record Bid:
     owner as address.private;
@@ -10,13 +10,13 @@ function place_bid:
     input r0 as address.private;
     input r1 as u64.private;
     assert.eq self.caller r0;
-    cast aleo1ashyu96tjwe63u0gtnnv8z5lhapdu4l5pjsl2kha7fv7hvz2eqxs5dz0rg r0 r1 false into r2 as Bid.record;
+    cast aleo1pv507qnamq8c84l7j4xfrnku2nf8wmt32sul7ldm63cfyxuj0yxs4vxed2 r0 r1 false into r2 as Bid.record;
     output r2 as Bid.record;
 
 function resolve:
     input r0 as Bid.record;
     input r1 as Bid.record;
-    assert.eq self.caller aleo1ashyu96tjwe63u0gtnnv8z5lhapdu4l5pjsl2kha7fv7hvz2eqxs5dz0rg;
+    assert.eq self.caller aleo1pv507qnamq8c84l7j4xfrnku2nf8wmt32sul7ldm63cfyxuj0yxs4vxed2;
     gte r0.amount r1.amount into r2;
     not r2 into r3;
     ternary r2 r0.owner r1.owner into r4;
@@ -28,6 +28,6 @@ function resolve:
 
 function finish:
     input r0 as Bid.record;
-    assert.eq self.caller aleo1ashyu96tjwe63u0gtnnv8z5lhapdu4l5pjsl2kha7fv7hvz2eqxs5dz0rg;
+    assert.eq self.caller aleo1pv507qnamq8c84l7j4xfrnku2nf8wmt32sul7ldm63cfyxuj0yxs4vxed2;
     cast r0.bidder r0.bidder r0.amount true into r1 as Bid.record;
     output r1 as Bid.record;

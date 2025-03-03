@@ -1,4 +1,4 @@
-# kay_aleo_workshop_1.aleo
+# kay_workshop_1.aleo
 
 ## Build Guide
 
